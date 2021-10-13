@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Form = styled(Box)`
   margin: 3em auto;
@@ -24,6 +25,10 @@ const Field = styled(TextField)`
   && {
     margin: 1em 2em;
   }
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const SignUp = () => {
@@ -93,6 +98,9 @@ const SignUp = () => {
         required
       />
       <Button>Sign Up</Button>
+      <Button>
+        <NavLink to="/">Cancel</NavLink>
+      </Button>
     </Form>
   );
 };
