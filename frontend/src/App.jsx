@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Dashboard from './components/Dashboard';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import './App.css';
@@ -11,7 +12,7 @@ const App = () => {
     <Router>
       <div className="App">
         {user ? (
-          <h1>Hello world</h1>
+          <Dashboard />
         ) : (
           <Switch>
             <Route path="/signup">

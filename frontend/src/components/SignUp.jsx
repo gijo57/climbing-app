@@ -38,7 +38,7 @@ const SignUp = () => {
         <Field
           id="firstName"
           label="First Name"
-          variant="filled"
+          variant="outlined"
           margin="normal"
           size="small"
           fullWidth
@@ -47,7 +47,7 @@ const SignUp = () => {
         <Field
           id="lastName"
           label="Last Name"
-          variant="filled"
+          variant="outlined"
           margin="normal"
           size="small"
           fullWidth
@@ -57,7 +57,7 @@ const SignUp = () => {
       <Field
         id="username"
         label="Username"
-        variant="filled"
+        variant="outlined"
         margin="normal"
         size="small"
         fullWidth
@@ -67,7 +67,7 @@ const SignUp = () => {
       <Field
         id="email"
         label="Email"
-        variant="filled"
+        variant="outlined"
         margin="normal"
         type="email"
         size="small"
@@ -78,7 +78,7 @@ const SignUp = () => {
       <Field
         id="password"
         label="Password"
-        variant="filled"
+        variant="outlined"
         margin="normal"
         type="password"
         size="small"
@@ -89,7 +89,7 @@ const SignUp = () => {
       <Field
         id="repeatPassword"
         label="Repeat password"
-        variant="filled"
+        variant="outlined"
         margin="normal"
         type="password"
         size="small"
