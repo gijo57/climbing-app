@@ -1,16 +1,12 @@
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Drawer from '@mui/material/Drawer';
 
 const NavBar = () => {
   return (
-    <h1>
-      <SwipeableDrawer open>
-        <ul>
-          <li>A</li>
-          <li>B</li>
-          <li>C</li>
-        </ul>
-      </SwipeableDrawer>
-    </h1>
+    <Drawer variant="persistent" open>
+      <ul>
+        <li>j</li>
+      </ul>
+    </Drawer>
   );
 };
 
