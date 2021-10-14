@@ -5,13 +5,13 @@ import Button from '@mui/material/Button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const SignUpWrapper = styled.div`
+const LogInWrapper = styled.div`
   border: 1px solid grey;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
+  width: 100%;
   margin: 2em auto;
   padding: 3em 0;
 `;
@@ -51,7 +51,7 @@ const NavLink = styled(Link)`
 
 const LogIn = () => {
   return (
-    <SignUpWrapper>
+    <LogInWrapper>
       <Form component="form">
         <Field
           id="username"
@@ -84,7 +84,7 @@ const LogIn = () => {
       <NewAcctBtn variant="contained">
         <NavLink to="signup">Create new account</NavLink>
       </NewAcctBtn>
-    </SignUpWrapper>
+    </LogInWrapper>
   );
 };
 

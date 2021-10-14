@@ -6,24 +6,36 @@ import { Link } from 'react-router-dom';
 
 const Form = styled(Box)`
   margin: 3em auto;
-  padding: 3em;
+  padding: 2em 4em;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 50%;
-  border: 1px solid grey;
-  border-radius: 20px;
+
+  @media screen and (min-width: 992px) {
+    border: 1px solid grey;
+    border-radius: 2em;
+    width: 70%;
+  }
 `;
 
 const Names = styled.div`
-  display: flex;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  justify-content: space-between;
+
+  @media screen and (min-width: 600px) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .MuiFormControl-root {
+      width: 45%;
+    }
+  }
 `;
 
 const Field = styled(TextField)`
   && {
-    margin: 1em 2em;
   }
 `;
 
