@@ -7,6 +7,9 @@ const IconGroup = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 0.5em 1em;
+  @media screen and (min-width: 600px) {
+    display: none;
+  }
 `;
 
 const IconWrapper = styled.div`
