@@ -15,7 +15,7 @@ const BottomNavAction = styled(BottomNavigationAction)`
   font-size: 2em;
 `;
 
-const AppBar = () => {
+const BottomNavBar = () => {
   return (
     <Paper
       sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
@@ -29,7 +29,7 @@ const AppBar = () => {
           icon={<AccountCircleIcon fontSize="inherit" />}
         />
         <BottomNavAction
-          label="as"
+          label="Profile"
           icon={<AccountCircleIcon fontSize="inherit" />}
         />
       </BottomNav>
@@ -37,4 +37,4 @@ const AppBar = () => {
   );
 };
 
-export default AppBar;
+export default BottomNavBar;
