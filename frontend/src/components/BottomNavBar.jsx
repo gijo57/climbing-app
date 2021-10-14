@@ -3,6 +3,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Paper from '@mui/material/Paper';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
+
 import styled from 'styled-components';
 
 const BottomNav = styled(BottomNavigation)`
