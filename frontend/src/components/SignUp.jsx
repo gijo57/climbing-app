@@ -5,16 +5,20 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Form = styled(Box)`
+  max-width: 700px;
   margin: 3em auto;
   padding: 2em 4em;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 
+  @media screen and (min-width: 600px) {
+    padding: 2em 6em;
+  }
+
   @media screen and (min-width: 992px) {
     border: 1px solid grey;
     border-radius: 2em;
-    width: 70%;
   }
 `;
 
@@ -34,11 +38,6 @@ const Names = styled.div`
   }
 `;
 
-const Field = styled(TextField)`
-  && {
-  }
-`;
-
 const NavLink = styled(Link)`
   text-decoration: none;
 `;
@@ -47,7 +46,7 @@ const SignUp = () => {
   return (
     <Form component="form">
       <Names>
-        <Field
+        <TextField
           id="firstName"
           label="First Name"
           variant="outlined"
@@ -56,7 +55,7 @@ const SignUp = () => {
           fullWidth
           required
         />
-        <Field
+        <TextField
           id="lastName"
           label="Last Name"
           variant="outlined"
@@ -66,7 +65,7 @@ const SignUp = () => {
           required
         />
       </Names>
-      <Field
+      <TextField
         id="username"
         label="Username"
         variant="outlined"
@@ -76,7 +75,7 @@ const SignUp = () => {
         required
         error={false}
       />
-      <Field
+      <TextField
         id="email"
         label="Email"
         variant="outlined"
@@ -87,7 +86,7 @@ const SignUp = () => {
         error={false}
         required
       />
-      <Field
+      <TextField
         id="password"
         label="Password"
         variant="outlined"
@@ -98,7 +97,7 @@ const SignUp = () => {
         required
         error={false}
       />
-      <Field
+      <TextField
         id="repeatPassword"
         label="Repeat password"
         variant="outlined"
