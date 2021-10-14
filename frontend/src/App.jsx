@@ -6,7 +6,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('null');
 
   return (
     <Router>
