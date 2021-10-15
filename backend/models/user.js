@@ -15,7 +15,8 @@ const userSchema = new Schema({
   },
   username: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   passwordHash: {
     type: String
@@ -23,6 +24,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
     validate: {
       validator: validateEmail,
       message: 'Please enter a valid email address.'
