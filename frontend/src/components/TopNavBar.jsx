@@ -19,12 +19,13 @@ const TopNavBar = ({ onSideBarOpen, isSideBarOpen }) => {
       <TopNav>
         <Toolbar>
           <IconButton
+            id="menuButton"
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2, ...(isSideBarOpen && { display: 'none' }) }}
-            onClick={onSideBarOpen}
+            onClick={() => onSideBarOpen(true)}
           >
             <MenuIcon />
           </IconButton>
