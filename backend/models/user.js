@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const validateEmail = require('../utils/validateEmail');
+const validateEmail = require('../utils/email-validator');
 const capitalize = require('../utils/capitalize');
 
 const userSchema = new Schema({
