@@ -29,6 +29,16 @@ router.post('/login', async (req, res, next) => {
 
   const correctPassword =
     user === null ? false : await bcrypt.compare(password, user.passwordHash);
+
+  if (!(user && correctPassword)) {
+    return res.status(401).json({
+      error: 'Incorrect username or password.'
+    });
+  }
+
+  req.session.userId = user._id;
+
+  res.json(user);
 });
 
 module.exports = router;

@@ -14,8 +14,9 @@ app.use(session);
 //app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 
-app.get('/', (req, res) => {
-  res.send('hi');
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({ error: { message: error.message } });
 });
 
 module.exports = app;

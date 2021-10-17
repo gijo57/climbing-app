@@ -2,9 +2,9 @@ POST http://localhost:3001/api/auth/signup
 Content-Type: application/json
 
 {
-    "username":"Pena",
-    "firstName":"pena",
+    "username":"pena",
+    "firstName":"Pena",
     "lastName":"Buuna",
-    "email":"gayrager@gay.com",
-    "password":"persepaukuttaja"
+    "email":"test@test.com",
+    "password":"123"
 }
