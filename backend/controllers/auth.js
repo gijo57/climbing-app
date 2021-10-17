@@ -20,4 +20,15 @@ router.post('/signup', async (req, res, next) => {
   res.json(savedUser);
 });
 
+router.post('/login', async (req, res, next) => {
+  const { emailOrUsername, password } = req.body;
+  const user = await User.findOne().or([
+    { username: emailOrUsername },
+    { email: emailOrUsername }
+  ]);
+
+  const correctPassword =
+    user === null ? false : await bcrypt.compare(password, user.passwordHash);
+});
+
 module.exports = router;
