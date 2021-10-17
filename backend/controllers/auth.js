@@ -41,4 +41,9 @@ router.post('/login', async (req, res, next) => {
   res.json(user);
 });
 
+router.post('/logout', (req, res, next) => {
+  req.session.destroy();
+  res.json('Logged out');
+});
+
 module.exports = router;
