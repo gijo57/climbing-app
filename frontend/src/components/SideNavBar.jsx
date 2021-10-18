@@ -6,6 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -14,7 +15,7 @@ const DrawerHeader = styled.div`
   justify-content: flex-start;
 `;
 
-const SideNavBar = ({ isOpen, onSideBarOpen }) => {
+const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
   const handleClose = (event) => {
     const element = document.getElementById('menuButton');
     if (!element.contains(event.target)) onSideBarOpen(false);
@@ -50,6 +51,10 @@ const SideNavBar = ({ isOpen, onSideBarOpen }) => {
             <ListItemText primary="Training programs" />
           </ListItem>
         </List>
+        <Divider />
+        <Link to="/" onClick={onLogout}>
+          Log out
+        </Link>
       </Drawer>
     </ClickAwayListener>
   );

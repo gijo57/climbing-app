@@ -1,19 +1,18 @@
 const express = require('express');
+const session = require('express-session');
 const cors = require('cors');
 const helmet = require('helmet');
 const userRouter = require('./controllers/user');
 const authRouter = require('./controllers/auth');
-const session = require('./config/session');
-const authDeserializer = require('./middleware/auth-deserializer.js');
+const sessionConfig = require('./config/session');
 
 const app = express();
 app.use(helmet());
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
-app.use(session);
-app.use(authDeserializer);
+app.use(session(sessionConfig));
 
-//app.use('/api/user', userRouter);
+app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 
 app.use((error, req, res, next) => {

@@ -40,16 +40,26 @@ const NewAcctBtn = styled(Button)`
   }
 `;
 
-const LogIn = () => {
+const LogIn = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [emailOrUsername, setEmailOrUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleLoginSubmit = async (event) => {
+    event.preventDefault();
+    onLogin({ emailOrUsername, password });
+    setEmailOrUsername('');
+    setPassword('');
+  };
+
   return (
-    <Form component="form">
+    <Form component="form" onSubmit={handleLoginSubmit}>
       <TextField
+        onChange={(event) => setEmailOrUsername(event.target.value)}
         id="username"
         label="Username or email"
         variant="outlined"
@@ -68,6 +78,7 @@ const LogIn = () => {
       />
 
       <TextField
+        onChange={(event) => setPassword(event.target.value)}
         id="password"
         label="Password"
         variant="outlined"
@@ -91,7 +102,9 @@ const LogIn = () => {
           )
         }}
       />
-      <LogInBtn variant="outlined">Log In</LogInBtn>
+      <LogInBtn variant="outlined" type="submit">
+        Log In
+      </LogInBtn>
       <Link to="">Forgot your password?</Link>
       <NewAcctBtn variant="contained">
         <Link to="signup">Create new account</Link>

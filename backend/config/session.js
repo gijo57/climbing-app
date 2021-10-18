@@ -16,13 +16,16 @@ redisClient.on('connect', () => {
   console.log('Connected to redis successfully');
 });
 
-module.exports = session({
+module.exports = {
   secret: process.env.SESSION_SECRET,
+  key: 'session_id',
   resave: true,
   saveUninitialized: false,
   cookie: {
+    path: '/',
+    secure: false,
     maxAge: 15 * 24 * 60 * 60 * 1000,
     httpOnly: true
   },
   store: new RedisStore({ client: redisClient })
-});
+};

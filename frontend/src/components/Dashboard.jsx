@@ -1,24 +1,10 @@
 import { useState } from 'react';
-import SideNavBar from './SideNavBar';
-import BottomNavBar from './BottomNavBar';
-import TopNavBar from './TopNavBar';
+import Nav from './Nav';
 
-const Dashboard = () => {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-
-  const handleSideBarOpen = (value) => {
-    setIsSideBarOpen(value);
-  };
-
+const Dashboard = ({ onLogout }) => {
   return (
     <div>
-      <TopNavBar
-        isSideBarOpen={isSideBarOpen}
-        onSideBarOpen={handleSideBarOpen}
-      />
-      <SideNavBar isOpen={isSideBarOpen} onSideBarOpen={handleSideBarOpen} />
-      <h1>Hello World!</h1>
-      <BottomNavBar />
+      <Nav onLogout={onLogout} />
     </div>
   );
 };

@@ -2,6 +2,14 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
+router.get('/', async (req, res, next) => {
+  if (req.session.userId) {
+    return res.json({ auth: true });
+  } else {
+    return res.json({ auth: false });
+  }
+});
+
 router.post('/signup', async (req, res, next) => {
   const { firstName, lastName, username, email, password } = req.body;
   const saltRounds = 10;
@@ -35,19 +43,14 @@ router.post('/login', async (req, res, next) => {
       error: 'Incorrect username or password.'
     });
   }
+  req.session.userId = user.id;
 
-  const sessionUser = {
-    id: user._id,
-    username: user.username
-  };
-  req.session.user = sessionUser;
-
-  res.json(sessionUser);
+  res.json({ auth: true });
 });
 
 router.post('/logout', (req, res, next) => {
   req.session.destroy();
-  res.json('Logged out');
+  res.json({ auth: false });
 });
 
 module.exports = router;
