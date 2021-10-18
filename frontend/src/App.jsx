@@ -8,7 +8,6 @@ import { login, logout, isAuth } from './services/auth';
 
 const App = () => {
   const [auth, setAuth] = useState(false);
-  console.log(auth);
 
   const readAuthStatus = async () => {
     const authStatus = await isAuth();

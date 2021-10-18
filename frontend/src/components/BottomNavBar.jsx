@@ -6,7 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import styled from 'styled-components';
 
-const BottomNav = styled(BottomNavigation)`
+const BottomNav = styled(Paper)`
   @media screen and (min-width: 600px) {
     display: none;
   }
@@ -18,11 +18,11 @@ const BottomNavAction = styled(BottomNavigationAction)`
 
 const BottomNavBar = () => {
   return (
-    <Paper
+    <BottomNav
       sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
       elevation={3}
     >
-      <BottomNav showLabels sx={{ top: 'auto', bottom: 0 }}>
+      <BottomNavigation showLabels sx={{ top: 'auto', bottom: 0 }}>
         <BottomNavAction label="Home" icon={<HomeIcon fontSize="inherit" />} />
         <BottomNavAction label="As" icon={<HomeIcon fontSize="inherit" />} />
         <BottomNavAction
@@ -33,8 +33,8 @@ const BottomNavBar = () => {
           label="Profile"
           icon={<AccountCircleIcon fontSize="inherit" />}
         />
-      </BottomNav>
-    </Paper>
+      </BottomNavigation>
+    </BottomNav>
   );
 };
 

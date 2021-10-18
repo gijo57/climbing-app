@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 
 import styled from 'styled-components';
 
-const TopNav = styled(AppBar)`
+const TopNav = styled(Paper)`
   font-size: 2em;
   @media screen and (max-width: 600px) {
     display: none;
@@ -15,8 +15,8 @@ const TopNav = styled(AppBar)`
 
 const TopNavBar = ({ onSideBarOpen, isSideBarOpen }) => {
   return (
-    <Paper sx={{ position: 'fixed', top: 0, left: 0, right: 0 }} elevation={3}>
-      <TopNav>
+    <TopNav sx={{ position: 'fixed', top: 0, left: 0, right: 0 }} elevation={3}>
+      <AppBar>
         <Toolbar>
           <IconButton
             id="menuButton"
@@ -30,8 +30,8 @@ const TopNavBar = ({ onSideBarOpen, isSideBarOpen }) => {
             <MenuIcon />
           </IconButton>
         </Toolbar>
-      </TopNav>
-    </Paper>
+      </AppBar>
+    </TopNav>
   );
 };
 
