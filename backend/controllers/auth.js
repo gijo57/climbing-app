@@ -36,9 +36,13 @@ router.post('/login', async (req, res, next) => {
     });
   }
 
-  req.session.userId = user._id;
+  const sessionUser = {
+    id: user._id,
+    username: user.username
+  };
+  req.session.user = sessionUser;
 
-  res.json(user);
+  res.json(sessionUser);
 });
 
 router.post('/logout', (req, res, next) => {

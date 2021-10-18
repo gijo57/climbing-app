@@ -1,7 +1,8 @@
 const User = require('../models/user');
 
 module.exports = (req, res, next) => {
-  const userId = req.session.userId;
+  const userId = req.session.user?.id;
+
   if (userId) {
     User.findById(userId)
       .then((user) => {
