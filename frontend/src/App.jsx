@@ -3,6 +3,8 @@ import Dashboard from './components/Dashboard';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import './App.css';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { login, logout, isAuth } from './services/auth';
 
@@ -29,22 +31,24 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="App">
-        {auth ? (
-          <Dashboard onLogout={handleLogout} />
-        ) : (
-          <Switch>
-            <Route path="/signup">
-              <SignUp />
-            </Route>
-            <Route path="/">
-              <LogIn onLogin={handleLogin} />
-            </Route>
-          </Switch>
-        )}
-      </div>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div className="App">
+          {auth ? (
+            <Dashboard onLogout={handleLogout} />
+          ) : (
+            <Switch>
+              <Route path="/signup">
+                <SignUp />
+              </Route>
+              <Route path="/">
+                <LogIn onLogin={handleLogin} />
+              </Route>
+            </Switch>
+          )}
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 };
 

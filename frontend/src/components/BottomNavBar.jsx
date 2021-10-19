@@ -3,16 +3,16 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Paper from '@mui/material/Paper';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
-
+import { styled as MUIstyled } from '@mui/material/styles';
 import styled from 'styled-components';
 
-const BottomNav = styled(Paper)`
+const BottomNav = MUIstyled(Paper)`
   @media screen and (min-width: 600px) {
     display: none;
   }
 `;
 
-const BottomNavAction = styled(BottomNavigationAction)`
+const BottomNavAction = MUIstyled(BottomNavigationAction)`
   font-size: 2em;
 `;
 

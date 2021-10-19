@@ -8,9 +8,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import styled from 'styled-components';
+import { styled as MUIstyled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
-const Form = styled(Box)`
+const Form = MUIstyled(Box)`
   max-width: 400px;
   margin: 2em auto;
   padding: 2em 4em;
@@ -24,7 +25,7 @@ const Form = styled(Box)`
   }
 `;
 
-const LogInBtn = styled(Button)`
+const LogInBtn = MUIstyled(Button)`
   && {
     width: 100%;
     margin: 2em auto;
@@ -32,7 +33,7 @@ const LogInBtn = styled(Button)`
   }
 `;
 
-const NewAcctBtn = styled(Button)`
+const NewAcctBtn = MUIstyled(Button)`
   && {
     width: 100%;
     margin-top: 3em;

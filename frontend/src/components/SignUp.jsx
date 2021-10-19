@@ -2,9 +2,10 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import { styled as MUIstyled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
-const Form = styled(Box)`
+const Form = MUIstyled(Box)`
   max-width: 700px;
   margin: 3em auto;
   padding: 2em 4em;
@@ -38,7 +39,7 @@ const Names = styled.div`
   }
 `;
 
-const NavLink = styled(Link)`
+const NavLink = MUIstyled(Link)`
   text-decoration: none;
 `;
 

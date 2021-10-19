@@ -14,9 +14,10 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom';
 
+import { styled as MUIstyled } from '@mui/material/styles';
 import styled from 'styled-components';
 
-const SideNav = styled(Paper)`
+const SideNav = MUIstyled(Paper)`
   @media screen and (max-width: 600px) {
     display: none;
   }

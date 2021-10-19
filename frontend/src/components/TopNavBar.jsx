@@ -3,10 +3,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
-
+import { styled as MUIstyled } from '@mui/material/styles';
 import styled from 'styled-components';
 
-const TopNav = styled(Paper)`
+const TopNav = MUIstyled(Paper)`
   font-size: 2em;
   @media screen and (max-width: 600px) {
     display: none;
