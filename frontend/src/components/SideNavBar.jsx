@@ -8,6 +8,10 @@ import Divider from '@mui/material/Divider';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import MuiLink from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -53,13 +57,67 @@ const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
             </div>
           </DrawerHeader>
           <Divider />
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <FitnessCenterIcon fontSize="inherit" />
-              </ListItemIcon>
-              <ListItemText primary="Training programs" />
-            </ListItem>
+          <List sx={{ padding: 0 }}>
+            <Accordion disableGutters square sx={{ boxShadow: 'none' }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <ListItem>
+                  <ListItemIcon>
+                    <FitnessCenterIcon fontSize="inherit" />
+                  </ListItemIcon>
+                  <ListItemText primary="Training programs" />
+                </ListItem>
+              </AccordionSummary>
+              <AccordionDetails>
+                <List>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                </List>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disableGutters square sx={{ boxShadow: 'none' }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <ListItem>
+                  <ListItemIcon>
+                    <FitnessCenterIcon fontSize="inherit" />
+                  </ListItemIcon>
+                  <ListItemText primary="Training programs" />
+                </ListItem>
+              </AccordionSummary>
+              <AccordionDetails>
+                <List>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Training program" />
+                  </ListItem>
+                </List>
+              </AccordionDetails>
+            </Accordion>
           </List>
           <Divider />
           <MuiLink

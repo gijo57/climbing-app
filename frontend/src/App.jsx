@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { login, logout, isAuth } from './services/auth';
 
 const App = () => {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
 
   const readAuthStatus = async () => {
     const authStatus = await isAuth();
