@@ -46,6 +46,7 @@ const NavLink = MUIstyled(Link)`
 const SignUp = () => {
   return (
     <Form component="form">
+      <p>SIGN UP</p>
       <Names>
         <TextField
           id="firstName"

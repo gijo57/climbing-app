@@ -9,12 +9,13 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import styled from 'styled-components';
 import { styled as MUIstyled } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Form = MUIstyled(Box)`
   max-width: 400px;
   margin: 2em auto;
-  padding: 2em 4em;
+  padding: 2em 3em;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -33,12 +34,15 @@ const LogInBtn = MUIstyled(Button)`
   }
 `;
 
-const NewAcctBtn = MUIstyled(Button)`
-  && {
-    width: 100%;
-    margin-top: 3em;
-    padding: 1em;
-  }
+const PasswordLink = styled(Link)`
+  margin-bottom: 10%;
+  text-decoration: none;
+  font-size: 0.5em;
+`;
+
+const SignUpLink = styled(Link)`
+  text-decoration: none;
+  font-size: 0.7em;
 `;
 
 const LogIn = ({ onLogin }) => {
@@ -59,6 +63,7 @@ const LogIn = ({ onLogin }) => {
 
   return (
     <Form component="form" onSubmit={handleLoginSubmit}>
+      <p>LOGIN</p>
       <TextField
         onChange={(event) => setEmailOrUsername(event.target.value)}
         id="username"
@@ -103,13 +108,16 @@ const LogIn = ({ onLogin }) => {
           )
         }}
       />
+      <PasswordLink component={RouterLink} to="">
+        Forgot your password?
+      </PasswordLink>
       <LogInBtn variant="outlined" type="submit">
         Log In
       </LogInBtn>
-      <Link to="">Forgot your password?</Link>
-      <NewAcctBtn variant="contained">
-        <Link to="signup">Create new account</Link>
-      </NewAcctBtn>
+
+      <SignUpLink component={RouterLink} to="/signup">
+        Don't have an account? Sign up!
+      </SignUpLink>
     </Form>
   );
 };
