@@ -66,14 +66,14 @@ const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
             <Accordion disableGutters square sx={{ boxShadow: 'none' }}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
+                aria-controls="my-programs-nav-content"
+                id="my-programs-nav"
               >
                 <ListItem>
                   <ListItemIcon>
                     <FitnessCenterIcon fontSize="inherit" />
                   </ListItemIcon>
-                  <ListItemText primary="Training programs" />
+                  <ListItemText primary="My programs" />
                 </ListItem>
               </AccordionSummary>
               <AccordionDetails>
