@@ -29,6 +29,10 @@ const DrawerHeader = styled.div`
   justify-content: flex-start;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
   const handleClose = (event) => {
     const element = document.getElementById('menuButton');
@@ -75,16 +79,24 @@ const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
               <AccordionDetails>
                 <List>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                 </List>
               </AccordionDetails>
@@ -105,16 +117,24 @@ const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
               <AccordionDetails>
                 <List>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Training program" />
+                    <StyledLink to="/">
+                      <ListItemText primary="Training program" />
+                    </StyledLink>
                   </ListItem>
                 </List>
               </AccordionDetails>
