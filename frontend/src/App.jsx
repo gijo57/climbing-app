@@ -38,9 +38,7 @@ const App = () => {
             <Dashboard onLogout={handleLogout} />
           ) : (
             <Switch>
-              <Route path="/signup">
-                <SignUp />
-              </Route>
+              <Route path="/signup" component={SignUp} />
               <Route path="/">
                 <LogIn onLogin={handleLogin} />
               </Route>

@@ -36,7 +36,9 @@ const StyledLink = styled(Link)`
 const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
   const handleClose = (event) => {
     const element = document.getElementById('menuButton');
-    if (!element.contains(event.target)) onSideBarOpen(false);
+    if (!element.contains(event.target) || event.target.tagName === 'A') {
+      onSideBarOpen(false);
+    }
   };
 
   return (
@@ -58,7 +60,15 @@ const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
           <DrawerHeader>
             <div>
               <h3>Pekka</h3>
-              <h4>See profile</h4>
+              <MuiLink
+                color="inherit"
+                underline="none"
+                component={Link}
+                to="/profile"
+                onClick={handleClose}
+              >
+                See profile
+              </MuiLink>
             </div>
           </DrawerHeader>
           <Divider />
