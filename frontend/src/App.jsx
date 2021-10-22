@@ -1,15 +1,24 @@
 import { useState, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import Nav from './components/Nav';
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { login, logout, isAuth } from './services/auth';
+import styled from 'styled-components';
+
+const Content = styled.div`
+  margin: 0;
+  padding: 5em;
+  height: 100vh;
+`;
 
 const App = () => {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
 
   const readAuthStatus = async () => {
     const authStatus = await isAuth();
@@ -35,7 +44,15 @@ const App = () => {
       <Router>
         <div className="App">
           {auth ? (
-            <Dashboard onLogout={handleLogout} />
+            <div>
+              <Nav onLogout={handleLogout} />
+              <Content className="content">
+                <Switch>
+                  <Route path="/profile" component={Profile} />
+                  <Route path="/" component={Dashboard} />
+                </Switch>
+              </Content>
+            </div>
           ) : (
             <Switch>
               <Route path="/signup" component={SignUp} />

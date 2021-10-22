@@ -1,14 +1,8 @@
-import Nav from './Nav';
-import Profile from '../components/Profile';
-import { Switch, Route } from 'react-router-dom';
-
-const Dashboard = ({ onLogout }) => {
+const Dashboard = () => {
   return (
     <div>
-      <Nav onLogout={onLogout} />
-      <Switch>
-        <Route path="/profile" component={Profile} />
-      </Switch>
+      {/* Remove inline styles!! */}
+      <h1 style={{ margin: '0' }}>HELLO WORLD!</h1>
     </div>
   );
 };

@@ -7,6 +7,8 @@ import { styled as MUIstyled } from '@mui/material/styles';
 import styled from 'styled-components';
 
 const TopNav = MUIstyled(Paper)`
+  position: fixed;
+  top: 0;
   font-size: 2em;
   @media screen and (max-width: 600px) {
     display: none;
