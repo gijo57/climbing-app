@@ -28,10 +28,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    set: normalizeEmailToLowercase,
     validate: {
       validator: validateEmail,
       message: 'Please enter a valid email address.'
     }
+  },
+  birthDate: {
+    type: Date
   },
   profilePicture: {
     type: String

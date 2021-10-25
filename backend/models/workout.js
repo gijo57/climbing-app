@@ -2,11 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const workoutSchema = new Schema({
   program: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Program'
   },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
