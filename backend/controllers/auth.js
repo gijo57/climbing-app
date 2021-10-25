@@ -2,14 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
-router.get('/', async (req, res, next) => {
-  if (req.session.userId) {
-    return res.json({ auth: true });
-  } else {
-    return res.json({ auth: false });
-  }
-});
-
 router.post('/signup', async (req, res, next) => {
   const { firstName, lastName, username, email, password } = req.body;
   const saltRounds = 10;
@@ -25,7 +17,7 @@ router.post('/signup', async (req, res, next) => {
 
   const savedUser = await user.save();
 
-  res.json(savedUser);
+  res.json({ user: savedUser });
 });
 
 router.post('/login', async (req, res, next) => {
@@ -45,12 +37,12 @@ router.post('/login', async (req, res, next) => {
   }
   req.session.userId = user.id;
 
-  res.json({ auth: true });
+  res.json({ user });
 });
 
 router.post('/logout', (req, res, next) => {
   req.session.destroy();
-  res.json({ auth: false });
+  res.json({});
 });
 
 module.exports = router;

@@ -8,7 +8,8 @@ import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { login, logout, isAuth } from './services/auth';
+import { login, logout } from './services/auth';
+import { fetchUser } from './services/user';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -21,32 +22,32 @@ const Content = styled.div`
 `;
 
 const App = () => {
-  const [auth, setAuth] = useState(true);
+  const [user, setUser] = useState(null);
 
-  const readAuthStatus = async () => {
-    const authStatus = await isAuth();
-    setAuth(authStatus.auth);
+  const getUser = async () => {
+    const user = await fetchUser();
+    setUser(user);
   };
 
   useEffect(() => {
-    readAuthStatus();
+    getUser();
   }, []);
 
   const handleLogin = async (credentials) => {
-    const authStatus = await login(credentials);
-    setAuth(authStatus.auth);
+    const response = await login(credentials);
+    setUser(response.user);
   };
 
   const handleLogout = async () => {
-    const authStatus = await logout();
-    setAuth(authStatus.auth);
+    const response = await logout();
+    setUser(null);
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <div className="App">
-          {auth ? (
+          {user ? (
             <div>
               <Nav onLogout={handleLogout} />
               <Content className="content">

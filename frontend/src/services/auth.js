@@ -1,24 +1,17 @@
 import axiosConfig from '../config/axiosConfig';
 const subUrl = '/auth';
 
-const isAuth = async () => {
-  const url = `${subUrl}`;
-  const res = await axiosConfig.get(url, { withCredentials: true });
-  return res.data;
-};
-
 const login = async (credentials) => {
   const url = `${subUrl}/login`;
   const res = await axiosConfig.post(url, credentials, {
     withCredentials: true
   });
-  return res.data;
+  return res.data.user;
 };
 
-const logout = async () => {
+const logout = () => {
   const url = `${subUrl}/logout`;
-  const res = await axiosConfig.post(url, { withCredentials: true });
-  return res.data;
+  axiosConfig.post(url, { withCredentials: true });
 };
 
-export { login, logout, isAuth };
+export { login, logout };
