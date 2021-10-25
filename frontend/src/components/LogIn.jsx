@@ -66,6 +66,7 @@ const LogIn = ({ onLogin }) => {
       <p>LOGIN</p>
       <TextField
         onChange={(event) => setEmailOrUsername(event.target.value)}
+        value={emailOrUsername}
         id="username"
         label="Username or email"
         variant="outlined"
@@ -85,6 +86,7 @@ const LogIn = ({ onLogin }) => {
 
       <TextField
         onChange={(event) => setPassword(event.target.value)}
+        value={password}
         id="password"
         label="Password"
         variant="outlined"
