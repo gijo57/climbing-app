@@ -13,8 +13,11 @@ import styled from 'styled-components';
 
 const Content = styled.div`
   margin: 0;
-  padding: 5em;
+  padding: 3em;
   height: 100vh;
+  @media screen and (max-width: 600px) {
+    padding: 1em;
+  }
 `;
 
 const App = () => {

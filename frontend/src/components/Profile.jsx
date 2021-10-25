@@ -14,7 +14,13 @@ const Profile = () => {
     getUser();
   }, []);
 
-  return user && <div>Hola {user.firstName}</div>;
+  return (
+    user && (
+      <div>
+        <h1>Hola</h1>
+      </div>
+    )
+  );
 };
 
 export default Profile;
