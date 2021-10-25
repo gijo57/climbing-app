@@ -34,12 +34,12 @@ const App = () => {
   }, []);
 
   const handleLogin = async (credentials) => {
-    const response = await login(credentials);
-    setUser(response.user);
+    const user = await login(credentials);
+    setUser(user);
   };
 
   const handleLogout = async () => {
-    const response = await logout();
+    logout();
     setUser(null);
   };
 
