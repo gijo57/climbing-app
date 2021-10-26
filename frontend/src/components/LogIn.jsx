@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { styled as MUIstyled } from '@mui/material/styles';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
+import { logIn } from '../services/auth';
 
 const Form = MUIstyled(Box)`
   max-width: 400px;
@@ -56,7 +57,8 @@ const LogIn = ({ onLogin }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
-    onLogin({ emailOrUsername, password });
+    const user = await logIn({ emailOrUsername, password });
+    onLogin(user);
     setEmailOrUsername('');
     setPassword('');
   };

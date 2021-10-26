@@ -8,7 +8,7 @@ import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { login, logout } from './services/auth';
+import { logOut } from './services/auth';
 import { fetchUser } from './services/user';
 import styled from 'styled-components';
 
@@ -33,13 +33,12 @@ const App = () => {
     getUser();
   }, []);
 
-  const handleLogin = async (credentials) => {
-    const user = await login(credentials);
+  const handleAuthChange = (user) => {
     setUser(user);
   };
 
   const handleLogout = async () => {
-    logout();
+    logOut();
     setUser(null);
   };
 
@@ -61,7 +60,7 @@ const App = () => {
             <Switch>
               <Route path="/signup" component={SignUp} />
               <Route path="/">
-                <LogIn onLogin={handleLogin} />
+                <LogIn onLogin={handleAuthChange} />
               </Route>
             </Switch>
           )}
