@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
 import { styled as MUIstyled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import { signUp } from '../services/auth';
 
 const Form = MUIstyled(Box)`
   max-width: 700px;
@@ -43,12 +45,42 @@ const NavLink = MUIstyled(Link)`
   text-decoration: none;
 `;
 
-const SignUp = () => {
+const SignUp = ({ onSignUp }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password === repeatPassword) {
+      const user = await signUp({
+        username,
+        password,
+        email,
+        firstName,
+        lastName
+      });
+      onSignUp(user);
+    }
+
+    setUsername('');
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setRepeatPassword('');
+    setPassword('');
+  };
+
   return (
     <Form component="form">
       <p>SIGN UP</p>
       <Names>
         <TextField
+          onChange={(event) => setFirstName(event.target.value)}
+          value={firstName}
           id="firstName"
           label="First Name"
           variant="outlined"
@@ -58,6 +90,8 @@ const SignUp = () => {
           required
         />
         <TextField
+          onChange={(event) => setLastName(event.target.value)}
+          value={lastName}
           id="lastName"
           label="Last Name"
           variant="outlined"
@@ -68,6 +102,8 @@ const SignUp = () => {
         />
       </Names>
       <TextField
+        onChange={(event) => setUsername(event.target.value)}
+        value={username}
         id="username"
         label="Username"
         variant="outlined"
@@ -78,6 +114,8 @@ const SignUp = () => {
         error={false}
       />
       <TextField
+        onChange={(event) => setEmail(event.target.value)}
+        value={email}
         id="email"
         label="Email"
         variant="outlined"
@@ -89,6 +127,8 @@ const SignUp = () => {
         required
       />
       <TextField
+        onChange={(event) => setPassword(event.target.value)}
+        value={password}
         id="password"
         label="Password"
         variant="outlined"
@@ -100,6 +140,8 @@ const SignUp = () => {
         error={false}
       />
       <TextField
+        onChange={(event) => setRepeatPassword(event.target.value)}
+        value={repeatPassword}
         id="repeatPassword"
         label="Repeat password"
         variant="outlined"
@@ -110,7 +152,7 @@ const SignUp = () => {
         error={false}
         required
       />
-      <Button>Sign Up</Button>
+      <Button onClick={handleSubmit}>Sign Up</Button>
       <Button>
         <NavLink to="/">Cancel</NavLink>
       </Button>

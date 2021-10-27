@@ -4,7 +4,7 @@ import BottomNavBar from './BottomNavBar';
 import TopNavBar from './TopNavBar';
 import Backdrop from '@mui/material/Backdrop';
 
-const Nav = ({ onLogout }) => {
+const Nav = ({ onLogout, user }) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const handleSideBarOpen = (value) => {
@@ -19,6 +19,7 @@ const Nav = ({ onLogout }) => {
         onClick={handleSideBarOpen}
       >
         <SideNavBar
+          user={user}
           isOpen={isSideBarOpen}
           onSideBarOpen={handleSideBarOpen}
           onLogout={onLogout}

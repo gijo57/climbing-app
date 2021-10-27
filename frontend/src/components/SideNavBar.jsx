@@ -33,7 +33,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
+const SideNavBar = ({ isOpen, onSideBarOpen, onLogout, user }) => {
   const handleClose = (event) => {
     const element = document.getElementById('menuButton');
     if (!element.contains(event.target) || event.target.tagName === 'A') {
@@ -59,7 +59,7 @@ const SideNavBar = ({ isOpen, onSideBarOpen, onLogout }) => {
         >
           <DrawerHeader>
             <div>
-              <h3>Pekka</h3>
+              <h3>{user.firstName}</h3>
               <MuiLink
                 color="inherit"
                 underline="none"

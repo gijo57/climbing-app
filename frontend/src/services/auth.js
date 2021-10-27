@@ -13,9 +13,9 @@ const logIn = async (credentials) => {
   return res.data.user;
 };
 
-const logOut = () => {
+const logOut = async () => {
   const url = `${subUrl}/logout`;
-  api.post(url);
+  await api.post(url);
 };
 
 export { signUp, logIn, logOut };

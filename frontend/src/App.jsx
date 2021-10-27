@@ -48,7 +48,7 @@ const App = () => {
         <div className="App">
           {user ? (
             <div>
-              <Nav onLogout={handleLogout} />
+              <Nav user={user} onLogout={handleLogout} />
               <Content className="content">
                 <Switch>
                   <Route path="/profile" component={Profile} />
@@ -58,7 +58,9 @@ const App = () => {
             </div>
           ) : (
             <Switch>
-              <Route path="/signup" component={SignUp} />
+              <Route path="/signup">
+                <SignUp onSignUp={handleAuthChange} />
+              </Route>
               <Route path="/">
                 <LogIn onLogin={handleAuthChange} />
               </Route>
