@@ -16,6 +16,7 @@ router.post('/signup', async (req, res, next) => {
   });
 
   const savedUser = await user.save();
+  req.session.userId = savedUser.id;
 
   res.json({ user: savedUser });
 });
