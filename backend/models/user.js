@@ -1,24 +1,24 @@
 const { Schema, model } = require('mongoose');
-const {
-  validateEmail,
-  normalizeEmailToLowercase
-} = require('../utils/email-utils');
+const validateEmail = require('../utils/validate-email');
 const capitalize = require('../utils/capitalize');
 
 const userSchema = new Schema({
   firstName: {
     type: String,
     set: capitalize,
+    trim: true,
     required: true
   },
   lastName: {
     type: String,
     set: capitalize,
+    trim: true,
     required: true
   },
   username: {
     type: String,
     required: true,
+    trim: true,
     unique: true
   },
   passwordHash: {
@@ -28,7 +28,8 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    set: normalizeEmailToLowercase,
+    lowercase: true,
+    trim: true,
     validate: {
       validator: validateEmail,
       message: 'Please enter a valid email address.'

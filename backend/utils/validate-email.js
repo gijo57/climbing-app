@@ -4,11 +4,4 @@ const validateEmail = (email) => {
   return regex.test(email);
 };
 
-const normalizeEmailToLowercase = (email) => {
-  return email.toLowerCase();
-};
-
-module.exports = {
-  validateEmail,
-  normalizeEmailToLowercase
-};
+module.exports = validateEmail;

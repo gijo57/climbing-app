@@ -14,8 +14,9 @@ const setSchema = new Schema({
 });
 
 const exerciseSchema = new Schema({
-  exercise: {
+  name: {
     type: 'String',
+    trim: true,
     required: true
   },
   muscleGroups: {
