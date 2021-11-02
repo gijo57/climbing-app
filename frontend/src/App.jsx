@@ -23,7 +23,7 @@ const Content = styled.div`
 `;
 
 const App = () => {
-  const [user, setUser] = useState('null');
+  const [user, setUser] = useState(null);
 
   const getUser = async () => {
     const user = await fetchUser();
@@ -47,7 +47,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         <div className="App">
-          <Nav user={user} onLogout={handleLogout} />
+          {user && <Nav user={user} onLogout={handleLogout} />}
           <Content className="content">
             <Switch>
               <ProtectedRoute
@@ -57,14 +57,18 @@ const App = () => {
                 redirect="/"
                 user={user}
               />
-              <Route path="/" component={Dashboard} />
-
-              <Route path="/signup">
-                <SignUp onSignUp={handleAuthChange} />
-              </Route>
-              <Route path="/">
-                <LogIn onLogin={handleAuthChange} />
-              </Route>
+              <ProtectedRoute
+                path="/signup"
+                component={SignUp}
+                authorized={!user}
+                redirect="/"
+                onSignUp={handleAuthChange}
+              />
+              {(user && <Route path="/" component={Dashboard} />) || (
+                <Route path="/">
+                  <LogIn onLogin={handleAuthChange} />
+                </Route>
+              )}
             </Switch>
           </Content>
         </div>
