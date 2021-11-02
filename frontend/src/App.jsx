@@ -31,7 +31,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    //getUser();
+    getUser();
   }, []);
 
   const handleAuthChange = (user) => {

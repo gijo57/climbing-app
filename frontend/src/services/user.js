@@ -1,9 +1,9 @@
-import axiosConfig from '../config/axiosConfig';
+import api from '../config/axiosConfig';
 const subUrl = '/user';
 
 const fetchUser = async () => {
   const url = `${subUrl}`;
-  const res = await axiosConfig.get(url, { withCredentials: true });
+  const res = await api.get(url);
   return res.data;
 };
 
