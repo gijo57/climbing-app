@@ -4,6 +4,7 @@ import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Nav from './components/Nav';
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
@@ -22,7 +23,7 @@ const Content = styled.div`
 `;
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('null');
 
   const getUser = async () => {
     const user = await fetchUser();
@@ -30,7 +31,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    getUser();
+    //getUser();
   }, []);
 
   const handleAuthChange = (user) => {
@@ -46,18 +47,18 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         <div className="App">
-          {user ? (
-            <div>
-              <Nav user={user} onLogout={handleLogout} />
-              <Content className="content">
-                <Switch>
-                  <Route path="/profile" component={Profile} />
-                  <Route path="/" component={Dashboard} />
-                </Switch>
-              </Content>
-            </div>
-          ) : (
+          <Nav user={user} onLogout={handleLogout} />
+          <Content className="content">
             <Switch>
+              <ProtectedRoute
+                path="/profile"
+                component={Profile}
+                authorized={user}
+                redirect="/"
+                user={user}
+              />
+              <Route path="/" component={Dashboard} />
+
               <Route path="/signup">
                 <SignUp onSignUp={handleAuthChange} />
               </Route>
@@ -65,7 +66,7 @@ const App = () => {
                 <LogIn onLogin={handleAuthChange} />
               </Route>
             </Switch>
-          )}
+          </Content>
         </div>
       </Router>
     </ThemeProvider>

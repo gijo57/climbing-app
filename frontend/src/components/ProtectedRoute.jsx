@@ -1,8 +1,24 @@
 import { Route, Redirect } from 'react-router-dom';
 
-const ProtectedRoute = ({ authorized, path, redirect, ...props }) =>
-  (authorized && <Route path={path} {...props} />) || (
-    <Redirect path={path} to={redirect} />
+const ProtectedRoute = ({
+  component: Component,
+  authorized,
+  path,
+  redirect,
+  ...rest
+}) => {
+  return (
+    <Route
+      path={path}
+      render={(props) => {
+        return authorized ? (
+          <Component {...rest} {...props} />
+        ) : (
+          <Redirect to="/" />
+        );
+      }}
+    />
   );
+};
 
 export default ProtectedRoute;
