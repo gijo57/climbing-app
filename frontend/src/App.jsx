@@ -24,10 +24,12 @@ const Content = styled.div`
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   const getUser = async () => {
     const user = await fetchUser();
     setUser(user);
+    setLoaded(true);
   };
 
   useEffect(() => {
@@ -53,14 +55,14 @@ const App = () => {
               <ProtectedRoute
                 path="/profile"
                 component={Profile}
-                authorized={user}
+                authorized={!loaded || user}
                 redirect="/"
                 user={user}
               />
               <ProtectedRoute
                 path="/signup"
                 component={SignUp}
-                authorized={!user}
+                authorized={!loaded || !user}
                 redirect="/"
                 onSignUp={handleAuthChange}
               />

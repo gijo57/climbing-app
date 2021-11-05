@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { styled as MUIstyled } from '@mui/material/styles';
+import { fetchUser } from '../services/user';
 
 const labelProps = {
   variant: 'outlined',
@@ -15,18 +17,43 @@ const ProfileField = MUIstyled(TextField)`
   padding: 0 1em;
 `;
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const [isEditable, setIsEditable] = useState(false);
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = async () => {
+    const user = await fetchUser();
+    setUsername(user.username);
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setEmail(user.email);
+  };
+
+  const handleEditClick = () => {
+    setIsEditable(!isEditable);
+  };
+
   return (
-    (user && (
+    (username && (
       <div>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <h1>{user.username}</h1>
+            <h1>{username}</h1>
             <img
               src="https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png"
               alt="Profile img"
               width="100em"
             />
+            <button onClick={handleEditClick}>
+              {isEditable ? 'Save' : 'Edit details'}
+            </button>
           </Grid>
           <Grid item xs={12}>
             <h2>Personal details</h2>
@@ -36,28 +63,36 @@ const Profile = ({ user }) => {
                 label="Username"
                 variant="standard"
                 InputLabelProps={labelProps}
-                value={user.username}
+                value={username}
+                InputProps={{ readOnly: !isEditable }}
+                onChange={(event) => setUsername(event.target.value)}
               />
               <ProfileField
                 id="profile-input-firstname"
                 label="First Name"
                 variant="standard"
                 InputLabelProps={labelProps}
-                value={user.firstName}
+                value={firstName}
+                InputProps={{ readOnly: !isEditable }}
+                onChange={(event) => setFirstName(event.target.value)}
               />
               <ProfileField
                 id="profile-input-lastname"
                 label="Last Name"
                 variant="standard"
                 InputLabelProps={labelProps}
-                value={user.lastName}
+                value={lastName}
+                InputProps={{ readOnly: !isEditable }}
+                onChange={(event) => setLastName(event.target.value)}
               />
               <ProfileField
                 id="profile-input-email"
                 label="Email"
                 variant="standard"
                 InputLabelProps={labelProps}
-                value={user.email}
+                value={email}
+                InputProps={{ readOnly: !isEditable }}
+                onChange={(event) => setEmail(event.target.value)}
               />
             </form>
           </Grid>
