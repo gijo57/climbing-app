@@ -7,4 +7,10 @@ const fetchUser = async () => {
   return res.data;
 };
 
-export { fetchUser };
+const editUser = async () => {
+  const url = `${subUrl}`;
+  const res = await api.get(url);
+  return res.data;
+};
+
+export { fetchUser, editUser };

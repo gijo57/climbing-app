@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { styled as MUIstyled } from '@mui/material/styles';
-import { fetchUser } from '../services/user';
+import { fetchUser, editUser } from '../services/user';
 
 const labelProps = {
   variant: 'outlined',
@@ -37,6 +37,9 @@ const Profile = () => {
   };
 
   const handleEditClick = () => {
+    if (isEditable) {
+      editUser({ username, firstName, lastName, email });
+    }
     setIsEditable(!isEditable);
   };
 
