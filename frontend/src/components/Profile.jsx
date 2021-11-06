@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { styled as MUIstyled } from '@mui/material/styles';
-import { fetchUser, editUser } from '../services/user';
+import { editUser } from '../services/user';
 
 const labelProps = {
   variant: 'outlined',
@@ -17,7 +17,7 @@ const ProfileField = MUIstyled(TextField)`
   padding: 0 1em;
 `;
 
-const Profile = () => {
+const Profile = ({ user }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -25,16 +25,13 @@ const Profile = () => {
   const [email, setEmail] = useState('');
 
   useEffect(() => {
-    getUser();
-  }, []);
-
-  const getUser = async () => {
-    const user = await fetchUser();
-    setUsername(user.username);
-    setFirstName(user.firstName);
-    setLastName(user.lastName);
-    setEmail(user.email);
-  };
+    if (user) {
+      setUsername(user.username);
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setEmail(user.email);
+    }
+  }, [user]);
 
   const handleEditClick = () => {
     if (isEditable) {

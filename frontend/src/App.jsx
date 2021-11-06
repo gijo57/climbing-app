@@ -55,9 +55,9 @@ const App = () => {
               <ProtectedRoute
                 path="/profile"
                 component={Profile}
+                user={user}
                 authorized={!loaded || user}
                 redirect="/"
-                user={user}
               />
               <ProtectedRoute
                 path="/signup"
