@@ -5,10 +5,17 @@ router.get('/', async (req, res, next) => {
   res.json(req.user);
 });
 
-router.put('/:id', (req, res, next) => {
-  const { id } = req.params;
+router.put('/edit', async (req, res, next) => {
+  const { username, firstName, lastName, email } = req.body;
+  const { id } = req.user;
 
-  User.findByIdAndUpdate(id, {});
+  const updatedUser = await User.findByIdAndUpdate(
+    id,
+    { username, firstName, lastName, email },
+    { new: true }
+  );
+
+  res.json(updatedUser);
 });
 
 module.exports = router;

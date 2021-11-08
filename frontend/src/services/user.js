@@ -7,9 +7,9 @@ const fetchUser = async () => {
   return res.data;
 };
 
-const editUser = async () => {
-  const url = `${subUrl}`;
-  const res = await api.get(url);
+const editUser = async (data) => {
+  const url = `${subUrl}/edit`;
+  const res = await api.put(url, data);
   return res.data;
 };
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { styled as MUIstyled } from '@mui/material/styles';
-import { editUser } from '../services/user';
+import { fetchUser, editUser } from '../services/user';
 
 const labelProps = {
   variant: 'outlined',
@@ -17,7 +17,8 @@ const ProfileField = MUIstyled(TextField)`
   padding: 0 1em;
 `;
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const [user, setUser] = useState(null);
   const [isEditable, setIsEditable] = useState(false);
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -25,27 +26,31 @@ const Profile = ({ user }) => {
   const [email, setEmail] = useState('');
 
   useEffect(() => {
-    if (user) {
+    const getUser = async () => {
+      const user = await fetchUser();
       setUsername(user.username);
       setFirstName(user.firstName);
       setLastName(user.lastName);
       setEmail(user.email);
-    }
-  }, [user]);
+      setUser(user);
+    };
+    getUser();
+  }, []);
 
-  const handleEditClick = () => {
+  const handleEditClick = async () => {
     if (isEditable) {
-      editUser({ username, firstName, lastName, email });
+      const user = await editUser({ username, firstName, lastName, email });
+      setUser(user);
     }
     setIsEditable(!isEditable);
   };
 
   return (
-    (username && (
+    (user && (
       <div>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <h1>{username}</h1>
+            <h1>{user.username}</h1>
             <img
               src="https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png"
               alt="Profile img"
