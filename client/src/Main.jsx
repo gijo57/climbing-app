@@ -17,7 +17,6 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <TopNav />
-      <Text>FUCK YOU</Text>
       <BottomNav />
     </View>
   );
