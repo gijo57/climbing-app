@@ -3,15 +3,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import Main from './src/Main';
 import theme from './src/theme';
+import { NativeRouter } from 'react-router-native';
 
 export default function App() {
   return (
-    <PaperProvider theme={theme}>
-      <>
+    <>
+      <PaperProvider theme={theme}>
+        <NativeRouter>
+          <Main />
+        </NativeRouter>
         <StatusBar style="auto" />
-        <Main />
-      </>
-    </PaperProvider>
+      </PaperProvider>
+    </>
   );
 }
 
