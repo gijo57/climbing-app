@@ -1,2 +1,2 @@
-# shredz-app
-Fitness tracker app
+# climbing-app
+Climbing tracker app
