@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import BottomNav from './components/Navigation/BottomNav';
 import TopNav from './components/Navigation/TopNav';
 import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
-import { Route, Switch, Redirect } from 'react-router-native';
+import { Route, Switch } from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +33,9 @@ const Main = () => {
             <SignIn onAuthentication={setIsAuthenticated} />
           </Route>
         )}
+        <Route exact path="/signup">
+          <SignUp onAuthentication={setIsAuthenticated} />
+        </Route>
       </Switch>
     </View>
   );

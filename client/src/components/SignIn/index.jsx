@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import { Button, HelperText, useTheme } from 'react-native-paper';
+import { Link } from 'react-router-native';
 
 const SignIn = ({ onAuthentication }) => {
   const [username, setUsername] = useState(null);
@@ -53,6 +54,11 @@ const SignIn = ({ onAuthentication }) => {
       <Button dark mode="contained" style={buttonStyle} onPress={handleSubmit}>
         Sign In
       </Button>
+
+      <Text>Don't have an account yet?</Text>
+      <Link to="/signup">
+        <Text>Click here to register!</Text>
+      </Link>
     </View>
   );
 };
