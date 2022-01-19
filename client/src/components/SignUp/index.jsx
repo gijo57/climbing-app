@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text } from 'react-native';
-import { Button, HelperText, useTheme } from 'react-native-paper';
+import { ScrollView, Text } from 'react-native';
+import { Button, HelperText, TextInput, useTheme } from 'react-native-paper';
 import { Link } from 'react-router-native';
 
 const SignUp = ({ onAuthentication }) => {
-  const { inputStyle, buttonStyle, containerStyle } = useTheme();
+  const { inputStyle, buttonStyle, scrollContainerStyle } = useTheme();
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [username, setUsername] = useState(null);
@@ -36,7 +36,7 @@ const SignUp = ({ onAuthentication }) => {
   };
 
   return (
-    <View style={containerStyle}>
+    <ScrollView contentContainerStyle={scrollContainerStyle}>
       <TextInput
         label="First name"
         placeholder="First name"
@@ -80,6 +80,7 @@ const SignUp = ({ onAuthentication }) => {
         Test helper text
       </HelperText>
       <TextInput
+        mode="flat"
         label="Email"
         placeholder="Email"
         style={inputStyle}
@@ -113,7 +114,7 @@ const SignUp = ({ onAuthentication }) => {
       <Link to="/">
         <Text>Cancel</Text>
       </Link>
-    </View>
+    </ScrollView>
   );
 };
 

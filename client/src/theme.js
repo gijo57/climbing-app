@@ -11,16 +11,19 @@ const theme = {
     flexGrow: 1,
     flexShrink: 1,
     paddingHorizontal: 50,
-    paddingVertical: 50
+    paddingVertical: 10
+  },
+  scrollContainerStyle: {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    paddingHorizontal: 50,
+    paddingVertical: 10
   },
   inputStyle: {
     width: '100%',
-    marginVertical: 10,
-    paddingVertical: 5,
-    paddingHorizontal: 1,
-    borderBottomStyle: 'solid',
-    borderBottomWidth: 1,
-    borderBottomColor: '#6200ee'
+    marginTop: 15,
+    paddingHorizontal: 1
   },
   buttonStyle: {
     width: '100%',

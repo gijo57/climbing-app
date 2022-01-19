@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput } from 'react-native';
-import { Button, HelperText, useTheme, Avatar } from 'react-native-paper';
+import { ScrollView, StyleSheet } from 'react-native';
+import {
+  Button,
+  HelperText,
+  TextInput,
+  useTheme,
+  Avatar
+} from 'react-native-paper';
+
+const styles = {
+  avatar: {
+    marginVertical: 50
+  }
+};
 
 const Profile = () => {
-  const { inputStyle, buttonStyle, containerStyle } = useTheme();
+  const { inputStyle, buttonStyle, scrollContainerStyle } = useTheme();
   const [isEditable, setIsEditable] = useState(false);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -36,8 +48,8 @@ const Profile = () => {
   };
 
   return (
-    <View style={containerStyle}>
-      <Avatar.Image size={100} />
+    <ScrollView contentContainerStyle={scrollContainerStyle}>
+      <Avatar.Image size={100} style={styles.avatar} />
       <TextInput
         label="First name"
         editable={isEditable}
@@ -116,7 +128,7 @@ const Profile = () => {
       <Button dark mode="contained" style={buttonStyle} onPress={handlePress}>
         {(isEditable && 'Save') || 'Edit profile'}
       </Button>
-    </View>
+    </ScrollView>
   );
 };
 

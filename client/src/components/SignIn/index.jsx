@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text } from 'react-native';
-import { Button, HelperText, useTheme } from 'react-native-paper';
+import { View, Text } from 'react-native';
+import { Button, HelperText, TextInput, useTheme } from 'react-native-paper';
 import { Link } from 'react-router-native';
 
 const SignIn = ({ onAuthentication }) => {
