@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView, Text } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { Button, HelperText, TextInput, useTheme } from 'react-native-paper';
 import { Link } from 'react-router-native';
 import { signUp } from '../../services/auth';
@@ -10,7 +11,7 @@ const SignUp = ({ onAuthentication }) => {
   const [lastName, setLastName] = useState(null);
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
-  const [birthDate, setBirthDate] = useState(null);
+  const [birthDate, setBirthDate] = useState(new Date());
   const [password, setPassword] = useState(null);
   const [repeatPassword, setRepeatPassword] = useState(null);
 
@@ -110,6 +111,14 @@ const SignUp = ({ onAuthentication }) => {
         style={inputStyle}
         onChangeText={handleBirthDateChange}
         value={birthDate}
+      />
+      <DateTimePicker
+        value={birthDate}
+        mode={'date'}
+        show
+        is24Hour={true}
+        display="default"
+        onChange={handleBirthDateChange}
       />
       <HelperText
         style={{ alignSelf: 'flex-start' }}
