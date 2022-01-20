@@ -13,15 +13,19 @@ const styles = StyleSheet.create({
 
 const RecentsRoute = () => <Text>2</Text>;
 
-const BottomNav = ({ index, setIndex }) => {
+const BottomNav = ({ index, setIndex, user }) => {
   const [routes] = useState([
     { key: 'home', title: 'Home', icon: 'home', color: '#607D8B' },
     { key: 'recents', title: 'Recents', icon: 'history', color: '#3F51B5' },
     { key: 'profile', title: 'Profile', icon: 'account', color: '#795548' }
   ]);
+
+  const HomeRoute = () => <Home user={user} />;
+  const ProfileRoute = () => <Profile user={user} />;
+
   const renderScene = BottomNavigation.SceneMap({
-    profile: Profile,
-    home: Home,
+    profile: ProfileRoute,
+    home: HomeRoute,
     recents: RecentsRoute
   });
 

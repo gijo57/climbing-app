@@ -44,11 +44,15 @@ const Main = () => {
     <View style={styles.container}>
       <Switch>
         {(user && [
-          <Route exact path="/">
+          <Route key="1" exact path="/">
             <TopNav onSignOut={handleSignOut} />
-            <BottomNav index={bottomNavIndex} setIndex={setBottomNavIndex} />
+            <BottomNav
+              index={bottomNavIndex}
+              setIndex={setBottomNavIndex}
+              user={user}
+            />
           </Route>,
-          <Route exact path="/personal-details">
+          <Route key="2" exact path="/personal-details">
             <PersonalDetails />
           </Route>
         ]) || (
