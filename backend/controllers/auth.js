@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
-router.post('/signup', async (req, res, next) => {
+router.post('/sign-up', async (req, res, next) => {
   const { firstName, lastName, username, email, password } = req.body;
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
@@ -21,7 +21,7 @@ router.post('/signup', async (req, res, next) => {
   res.json({ user: savedUser });
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/sign-in', async (req, res, next) => {
   const { emailOrUsername, password } = req.body;
   const user = await User.findOne().or([
     { username: emailOrUsername },
@@ -41,7 +41,7 @@ router.post('/login', async (req, res, next) => {
   res.json({ user });
 });
 
-router.post('/logout', (req, res, next) => {
+router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
   res.json({});
 });

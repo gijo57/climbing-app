@@ -15,7 +15,7 @@ app.use(session(sessionConfig));
 app.use(authDeserializer);
 
 app.use('/api/user', userRouter);
-app.use('/api/auth', authRouter);
+app.use('/api/authentication', authRouter);
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
