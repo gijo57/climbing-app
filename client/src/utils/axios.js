@@ -1,10 +1,10 @@
 import axios from 'axios';
 import Constants from 'expo-constants';
 
-console.log(Constants.extra.apiURL);
+const baseURL = Constants.manifest.extra.apiURL;
 
 const api = axios.create({
-  baseURL: Constants.extra.apiURL,
+  baseURL,
   withCredentials: true
 });
 

@@ -11,7 +11,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const TopNav = () => {
+const TopNav = ({ onSignOut }) => {
+  const handlePress = () => {
+    onSignOut();
+  };
+
   return (
     <Appbar style={styles.top}>
       <Appbar.Action
@@ -23,10 +27,7 @@ const TopNav = () => {
         icon="label"
         onPress={() => console.log('Pressed label')}
       />
-      <Appbar.Action
-        icon="delete"
-        onPress={() => console.log('Pressed delete')}
-      />
+      <Appbar.Action icon="delete" onPress={handlePress} />
     </Appbar>
   );
 };

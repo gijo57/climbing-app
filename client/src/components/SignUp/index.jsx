@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { Button, HelperText, TextInput, useTheme } from 'react-native-paper';
 import { Link } from 'react-router-native';
+import { signUp } from '../../services/auth';
 
 const SignUp = ({ onAuthentication }) => {
   const { inputStyle, buttonStyle, scrollContainerStyle } = useTheme();
@@ -10,9 +11,18 @@ const SignUp = ({ onAuthentication }) => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [birthDate, setBirthDate] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [repeatPassword, setRepeatPassword] = useState(null);
 
-  const handleSubmit = () => {
-    console.log('submitted');
+  const handleSubmit = async () => {
+    const user = await signUp({
+      firstName,
+      lastName,
+      username,
+      email,
+      password
+    });
+    onAuthentication(user);
   };
 
   const handleFirstNameChange = (value) => {
@@ -100,6 +110,36 @@ const SignUp = ({ onAuthentication }) => {
         style={inputStyle}
         onChangeText={handleBirthDateChange}
         value={birthDate}
+      />
+      <HelperText
+        style={{ alignSelf: 'flex-start' }}
+        padding="none"
+        type="Error"
+      >
+        Test helper text
+      </HelperText>
+      <TextInput
+        label="Password"
+        secureTextEntry
+        placeholder="Password"
+        style={inputStyle}
+        onChangeText={setPassword}
+        value={password}
+      />
+      <HelperText
+        style={{ alignSelf: 'flex-start' }}
+        padding="none"
+        type="Error"
+      >
+        Test helper text
+      </HelperText>
+      <TextInput
+        label="Repeat password"
+        secureTextEntry
+        placeholder="Repeat password"
+        style={inputStyle}
+        onChangeText={setRepeatPassword}
+        value={repeatPassword}
       />
       <HelperText
         style={{ alignSelf: 'flex-start' }}

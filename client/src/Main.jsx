@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BottomNav from './components/Navigation/BottomNav';
 import TopNav from './components/Navigation/TopNav';
 import SignIn from './components/SignIn';
@@ -6,6 +6,8 @@ import SignUp from './components/SignUp';
 import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 import { Route, Switch } from 'react-router-native';
+import { getUser } from './services/user';
+import { signOut } from './services/auth';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,24 +19,41 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  const loadUser = async () => {
+    const user = await getUser();
+    setUser(user);
+  };
+
+  const handleAuthentication = (user) => setUser(user);
+
+  const handleSignOut = async () => {
+    await signOut();
+    setUser(null);
+  };
+
   return (
     <View style={styles.container}>
       <Switch>
-        {(isAuthenticated && (
+        {(user && (
           <Route exact path="/">
             <>
-              <TopNav />
+              <TopNav onSignOut={handleSignOut} />
               <BottomNav />
             </>
           </Route>
         )) || (
           <Route exact path="/">
-            <SignIn onAuthentication={setIsAuthenticated} />
+            <SignIn onAuthentication={handleAuthentication} />
           </Route>
         )}
         <Route exact path="/signup">
-          <SignUp onAuthentication={setIsAuthenticated} />
+          <SignUp onAuthentication={handleAuthentication} />
         </Route>
       </Switch>
     </View>

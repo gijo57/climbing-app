@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Button, HelperText, TextInput, useTheme } from 'react-native-paper';
 import { Link } from 'react-router-native';
+import { signIn } from '../../services/auth';
 
 const SignIn = ({ onAuthentication }) => {
-  const [username, setUsername] = useState(null);
+  const [emailOrUsername, setEmailOrUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const { inputStyle, buttonStyle, containerStyle } = useTheme();
 
-  const handleSubmit = () => {
-    console.log('username: ', username, 'password: ', password);
-    onAuthentication(true);
+  const handleSubmit = async () => {
+    const user = await signIn({ emailOrUsername, password });
+    onAuthentication(user);
   };
 
   const handleUsernameChange = (value) => {
-    setUsername(value);
+    setEmailOrUsername(value);
   };
 
   const handlePasswordChange = (value) => {
@@ -24,11 +25,11 @@ const SignIn = ({ onAuthentication }) => {
   return (
     <View style={containerStyle}>
       <TextInput
-        label="Username"
-        placeholder="Username"
+        label="Email or username"
+        placeholder="Email or username"
         style={inputStyle}
         onChangeText={handleUsernameChange}
-        value={username}
+        value={emailOrUsername}
       />
       <HelperText
         style={{ alignSelf: 'flex-start' }}
@@ -40,6 +41,7 @@ const SignIn = ({ onAuthentication }) => {
       <TextInput
         label="Password"
         placeholder="Password"
+        secureTextEntry
         style={inputStyle}
         onChangeText={handlePasswordChange}
         value={password}
