@@ -33,6 +33,11 @@ const theme = {
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: '#6200ee'
+  },
+  backArrowStyle: {
+    alignSelf: 'flex-start',
+    position: 'absolute',
+    left: 10
   }
 };
 

@@ -13,8 +13,7 @@ const styles = StyleSheet.create({
 
 const RecentsRoute = () => <Text>2</Text>;
 
-const BottomNav = () => {
-  const [index, setIndex] = useState(0);
+const BottomNav = ({ index, setIndex }) => {
   const [routes] = useState([
     { key: 'home', title: 'Home', icon: 'home', color: '#607D8B' },
     { key: 'recents', title: 'Recents', icon: 'history', color: '#3F51B5' },

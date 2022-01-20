@@ -3,6 +3,9 @@ import BottomNav from './components/Navigation/BottomNav';
 import TopNav from './components/Navigation/TopNav';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Home from './components/Home';
+import PersonalDetails from './components/Profile/PersonalDetails';
+
 import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 import { Route, Switch } from 'react-router-native';
@@ -20,7 +23,7 @@ const styles = StyleSheet.create({
 
 const Main = () => {
   const [user, setUser] = useState(null);
-
+  const [bottomNavIndex, setBottomNavIndex] = useState(0);
   useEffect(() => {
     loadUser();
   }, []);
@@ -40,14 +43,15 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <Switch>
-        {(user && (
+        {(user && [
           <Route exact path="/">
-            <>
-              <TopNav onSignOut={handleSignOut} />
-              <BottomNav />
-            </>
+            <TopNav onSignOut={handleSignOut} />
+            <BottomNav index={bottomNavIndex} setIndex={setBottomNavIndex} />
+          </Route>,
+          <Route exact path="/personal-details">
+            <PersonalDetails />
           </Route>
-        )) || (
+        ]) || (
           <Route exact path="/">
             <SignIn onAuthentication={handleAuthentication} />
           </Route>
