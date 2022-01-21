@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 const BottomNav = ({ index, setIndex, user }) => {
   const [routes] = useState([
     { key: 'home', title: 'Home', icon: 'home' },
-    { key: 'session', title: 'New session', icon: 'history' },
+    { key: 'session', title: 'New session', icon: 'plus-circle-outline' },
     { key: 'profile', title: 'Profile', icon: 'account' }
   ]);
 
