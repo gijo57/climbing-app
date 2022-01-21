@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { useHistory } from 'react-router-native';
+import { editUser } from '../../services/user';
 import {
   Button,
   HelperText,
@@ -16,16 +17,16 @@ const styles = {
   }
 };
 
-const Profile = () => {
+const Profile = ({ user }) => {
   const history = useHistory();
   const { inputStyle, buttonStyle, scrollContainerStyle, backArrowStyle } =
     useTheme();
   const [isEditable, setIsEditable] = useState(false);
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [birthDate, setBirthDate] = useState(null);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [birthDate, setBirthDate] = useState(user.birthDate);
 
   const handleFirstNameChange = (value) => {
     setFirstName(value);
@@ -47,7 +48,10 @@ const Profile = () => {
     setBirthDate(value);
   };
 
-  const handlePress = () => {
+  const handlePress = async () => {
+    if (isEditable) {
+      await editUser({ username, firstName, lastName, email });
+    }
     setIsEditable(!isEditable);
   };
 

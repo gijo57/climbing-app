@@ -53,7 +53,7 @@ const Main = () => {
             />
           </Route>,
           <Route key="2" exact path="/personal-details">
-            <PersonalDetails />
+            <PersonalDetails user={user} />
           </Route>
         ]) || (
           <Route exact path="/">

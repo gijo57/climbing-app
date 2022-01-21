@@ -9,3 +9,12 @@ export const getUser = async () => {
     console.log(JSON.stringify(e, null, 2));
   }
 };
+
+export const editUser = async (body) => {
+  try {
+    const response = await api.put(`${baseURL}/edit`, body);
+    return response.data;
+  } catch (e) {
+    console.log(JSON.stringify(e, null, 2));
+  }
+};
