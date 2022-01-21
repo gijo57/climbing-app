@@ -14,7 +14,7 @@ router.put('/edit', async (req, res, next) => {
     { username, firstName, lastName, email },
     { new: true }
   );
-  console.log(updatedUser);
+
   res.json(updatedUser);
 });
 

@@ -3,10 +3,8 @@ import BottomNav from './components/Navigation/BottomNav';
 import TopNav from './components/Navigation/TopNav';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import Home from './components/Home';
 import PersonalDetails from './components/Profile/PersonalDetails';
-
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { Route, Switch } from 'react-router-native';
 import { getUser } from './services/user';

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
+import { BottomNavigation } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 import Profile from '../Profile';
 import Home from '../Home';
+import Session from '../Session';
 import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
@@ -13,19 +14,19 @@ const styles = StyleSheet.create({
 
 const BottomNav = ({ index, setIndex, user }) => {
   const [routes] = useState([
-    { key: 'home', title: 'Home', icon: 'home', color: '#607D8B' },
-    { key: 'recents', title: 'Recents', icon: 'history', color: '#3F51B5' },
-    { key: 'profile', title: 'Profile', icon: 'account', color: '#795548' }
+    { key: 'home', title: 'Home', icon: 'home' },
+    { key: 'session', title: 'New session', icon: 'history' },
+    { key: 'profile', title: 'Profile', icon: 'account' }
   ]);
 
   const HomeRoute = () => <Home user={user} />;
   const ProfileRoute = () => <Profile user={user} />;
-  const RecentsRoute = () => <Text>2</Text>;
+  const SessionRoute = () => <Session />;
 
   const renderScene = BottomNavigation.SceneMap({
     profile: ProfileRoute,
     home: HomeRoute,
-    recents: RecentsRoute
+    session: SessionRoute
   });
 
   return (
