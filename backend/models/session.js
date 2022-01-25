@@ -11,6 +11,17 @@ const sessionSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  routes: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Route'
+  },
+  notes: {
+    type: String,
+    maxLength: 1000
+  },
+  images: {
+    type: [String]
   }
 });
 

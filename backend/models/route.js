@@ -5,6 +5,9 @@ const routeSchema = new Schema({
     type: String,
     enum: ['Boulder', 'Top rope', 'Sport', 'Trad', 'Other']
   },
+  gradingSystem: {
+    type: String
+  },
   grade: {
     type: String
   },
@@ -21,10 +24,11 @@ const routeSchema = new Schema({
     type: String,
     maxLength: 500
   },
-  session: {
-    type: Schema.Types.ObjectId,
-    ref: 'Session',
-    required: true
+  images: {
+    type: [String]
+  },
+  location: {
+    type: String
   }
 });
 
