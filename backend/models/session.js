@@ -1,6 +1,4 @@
 const { Schema, model } = require('mongoose');
-const validateEmail = require('../utils/validate-email');
-const capitalize = require('../utils/capitalize');
 
 const sessionSchema = new Schema({
   startTime: {
