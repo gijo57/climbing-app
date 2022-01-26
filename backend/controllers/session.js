@@ -12,4 +12,26 @@ router.get('/', async (req, res, next) => {
   res.json(sessions);
 });
 
+router.post('/', async (req, res, next) => {
+  const { startTime, endTime, routes, notes, images, location } = req.body;
+  const user = req.user;
+
+  const session = new Session({
+    startTime,
+    endTime,
+    user,
+    routes,
+    notes,
+    images,
+    location
+  });
+
+  try {
+    const newSession = await session.save();
+    res.json(newSession);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;

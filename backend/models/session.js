@@ -22,6 +22,9 @@ const sessionSchema = new Schema({
   },
   images: {
     type: [String]
+  },
+  location: {
+    type: String
   }
 });
 
