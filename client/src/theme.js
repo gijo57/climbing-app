@@ -10,14 +10,14 @@ const theme = {
     backgroundColor: 'transparent',
     flexGrow: 1,
     flexShrink: 1,
-    paddingHorizontal: 50,
+    paddingHorizontal: 30,
     paddingVertical: 10
   },
   scrollContainerStyle: {
     display: 'flex',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    paddingHorizontal: 50,
+    paddingHorizontal: 30,
     paddingVertical: 10
   },
   inputStyle: {

@@ -21,8 +21,11 @@ const Profile = ({ user }) => {
       <Link to="/personal-details">
         <Drawer.Item icon="account" label="Personal details" />
       </Link>
-      <Link to="/personal-details">
-        <Drawer.Item icon="account" label="Personal details" />
+      <Link to="/my-routes">
+        <Drawer.Item icon="routes" label="My routes" />
+      </Link>
+      <Link to="/my-sessions">
+        <Drawer.Item icon="account-clock" label="My sessions" />
       </Link>
     </View>
   );

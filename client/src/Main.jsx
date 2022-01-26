@@ -3,7 +3,9 @@ import BottomNav from './components/Navigation/BottomNav';
 import TopNav from './components/Navigation/TopNav';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import MyRoutes from './components/MyRoutes';
 import PersonalDetails from './components/Profile/PersonalDetails';
+import EditSession from './components/Session/EditSession';
 import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { Route, Switch } from 'react-router-native';
@@ -52,6 +54,12 @@ const Main = () => {
           </Route>,
           <Route key="2" exact path="/personal-details">
             <PersonalDetails user={user} />
+          </Route>,
+          <Route key="3" exact path="/my-routes">
+            <MyRoutes />
+          </Route>,
+          <Route key="4" exact path="/edit-session/:id">
+            <EditSession />
           </Route>
         ]) || (
           <Route exact path="/">
