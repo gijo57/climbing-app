@@ -3,12 +3,12 @@ import { View, Text } from 'react-native';
 import { Link } from 'react-router-native';
 import { Drawer, Avatar, useTheme } from 'react-native-paper';
 
-const styles = {
+const styles = StyleSheet.create({
   avatar: {
     marginTop: 50,
     marginBottom: 20
   }
-};
+});
 
 const Profile = ({ user }) => {
   const { containerStyle } = useTheme();

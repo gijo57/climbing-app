@@ -11,11 +11,11 @@ import {
   Appbar
 } from 'react-native-paper';
 
-const styles = {
+const styles = StyleSheet.create({
   avatar: {
     marginVertical: 50
   }
-};
+});
 
 const Profile = ({ user }) => {
   const history = useHistory();

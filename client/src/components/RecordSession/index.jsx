@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Button, useTheme } from 'react-native-paper';
 
-const styles = {
+const styles = StyleSheet.create({
   button: {
     alignSelf: 'center',
     marginVertical: 200
   }
-};
+});
 
 const RecordSession = () => {
   const { containerStyle, buttonStyle } = useTheme();
