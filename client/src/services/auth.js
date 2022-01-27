@@ -2,6 +2,7 @@ import api from '../utils/axios';
 const baseURL = '/authentication';
 
 export const signUp = async (body) => {
+  console.log(body);
   try {
     const response = await api.post(`${baseURL}/sign-up`, body);
     return response.data;

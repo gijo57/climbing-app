@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const routeSchema = new Schema({
+const climbSchema = new Schema({
   type: {
     type: String,
     enum: ['Boulder', 'Top rope', 'Sport', 'Trad', 'Other']
@@ -10,6 +10,16 @@ const routeSchema = new Schema({
   },
   grade: {
     type: String
+  },
+  attempts: {
+    type: Number
+  },
+  ascended: {
+    type: Boolean
+  },
+  ascendType: {
+    type: String,
+    enum: ['Onsight', 'Flash', 'Repeat', 'Redpoint']
   },
   tags: {
     type: [String]
@@ -26,6 +36,6 @@ const routeSchema = new Schema({
   }
 });
 
-const Route = model('Route', routeSchema);
+const Climb = model('Climb', climbSchema);
 
-module.exports = Route;
+module.exports = Climb;

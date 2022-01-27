@@ -12,9 +12,9 @@ const sessionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  routes: {
+  climbs: {
     type: [Schema.Types.ObjectId],
-    ref: 'Route'
+    ref: 'Climb'
   },
   notes: {
     type: String,

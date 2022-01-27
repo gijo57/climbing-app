@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { Button, useTheme } from 'react-native-paper';
+import { Modal, Portal, Button, Provider, useTheme } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   button: {
@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
 const RecordSession = () => {
   const { containerStyle, buttonStyle } = useTheme();
   const [isRunning, setIsRunning] = useState(false);
+  const [newClimbVisible, setNewClimbVisible] = React.useState(false);
+
+  const showModal = () => setNewClimbVisible(true);
+  const hideModal = () => setNewClimbVisible(false);
+  const modalStyle = { backgroundColor: 'white', padding: 20 };
 
   const handleStartPress = () => {
     setIsRunning(!isRunning);
@@ -19,8 +24,24 @@ const RecordSession = () => {
 
   return (
     (isRunning && (
-      <View>
-        <Text>Runnin'</Text>
+      <View style={containerStyle}>
+        <Provider>
+          <Portal>
+            <Modal
+              visible={newClimbVisible}
+              onDismiss={hideModal}
+              contentContainerStyle={modalStyle}
+            >
+              <Text>Example Modal. Click outside this area to dismiss.</Text>
+              <Button mode="contained" style={buttonStyle}>
+                Save climb
+              </Button>
+            </Modal>
+          </Portal>
+          <Button mode="contained" style={buttonStyle} onPress={showModal}>
+            Record climb
+          </Button>
+        </Provider>
       </View>
     )) || (
       <View style={containerStyle}>
