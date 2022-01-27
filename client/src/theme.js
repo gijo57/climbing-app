@@ -38,6 +38,14 @@ const theme = {
     alignSelf: 'flex-start',
     position: 'absolute',
     left: 10
+  },
+  iconStyle: {
+    unselected: {
+      color: 'rgba(255, 255, 255, 0.5)'
+    },
+    selected: {
+      color: 'rgba(255, 255, 255, 1)'
+    }
   }
 };
 

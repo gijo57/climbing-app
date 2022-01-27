@@ -5,6 +5,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import MyRoutes from './components/MyRoutes';
 import MySessions from './components/MySessions';
+import Settings from './components/Settings';
 import PersonalDetails from './components/Profile/PersonalDetails';
 import EditSession from './components/Session/EditSession';
 import { View, StyleSheet } from 'react-native';
@@ -64,6 +65,9 @@ const Main = () => {
           </Route>,
           <Route key="4" exact path="/edit-session/:id">
             <EditSession />
+          </Route>,
+          <Route key="4" exact path="/settings">
+            <Settings />
           </Route>
         ]) || (
           <Route exact path="/">

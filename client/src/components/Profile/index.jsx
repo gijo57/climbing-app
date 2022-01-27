@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Link } from 'react-router-native';
 import { Drawer, Avatar, useTheme } from 'react-native-paper';
+import { Icon } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   avatar: {
@@ -27,9 +28,8 @@ const Profile = ({ user }) => {
       <Link to="/my-sessions">
         <Drawer.Item icon="account-clock" label="My sessions" />
       </Link>
-
       <Link to="/settings">
-        <Drawer.Item icon="settings" label="Settings" />
+        <Drawer.Item icon={() => <Icon name="settings" />} label="Settings" />
       </Link>
     </View>
   );
