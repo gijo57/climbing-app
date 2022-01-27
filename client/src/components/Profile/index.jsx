@@ -27,6 +27,10 @@ const Profile = ({ user }) => {
       <Link to="/my-sessions">
         <Drawer.Item icon="account-clock" label="My sessions" />
       </Link>
+
+      <Link to="/settings">
+        <Drawer.Item icon="settings" label="Settings" />
+      </Link>
     </View>
   );
 };

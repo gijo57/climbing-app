@@ -6,6 +6,12 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: 'center',
     marginVertical: 200
+  },
+  modal: {
+    backgroundColor: 'white',
+    paddingHorizontal: 40,
+    height: '100%',
+    margin: 20
   }
 });
 
@@ -16,7 +22,6 @@ const RecordSession = () => {
 
   const showModal = () => setNewClimbVisible(true);
   const hideModal = () => setNewClimbVisible(false);
-  const modalStyle = { backgroundColor: 'white', padding: 20 };
 
   const handleStartPress = () => {
     setIsRunning(!isRunning);
@@ -30,9 +35,8 @@ const RecordSession = () => {
             <Modal
               visible={newClimbVisible}
               onDismiss={hideModal}
-              contentContainerStyle={modalStyle}
+              contentContainerStyle={styles.modal}
             >
-              <Text>Example Modal. Click outside this area to dismiss.</Text>
               <Button mode="contained" style={buttonStyle}>
                 Save climb
               </Button>
