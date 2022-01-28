@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Modal, Portal, Button, Provider, useTheme } from 'react-native-paper';
+import Grade from './Grade';
 
 const styles = StyleSheet.create({
   button: {
@@ -29,6 +30,7 @@ const RecordClimb = () => {
           onDismiss={hideModal}
           contentContainerStyle={styles.modal}
         >
+          <Grade />
           <Button mode="contained" style={buttonStyle}>
             Save climb
           </Button>
