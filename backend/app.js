@@ -4,6 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const userRouter = require('./controllers/user');
 const authRouter = require('./controllers/auth');
+const gradingSystemRouter = require('./controllers/gradingsystem');
 const sessionRouter = require('./controllers/session');
 const sessionConfig = require('./config/session');
 const authDeserializer = require('./middleware/auth-deserializer');
@@ -18,6 +19,7 @@ app.use(authDeserializer);
 app.use('/api/user', userRouter);
 app.use('/api/authentication', authRouter);
 app.use('/api/sessions', sessionRouter);
+app.use('/api/gradingsystems', gradingSystemRouter);
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);

@@ -25,6 +25,16 @@ const theme = {
     marginTop: 15,
     paddingHorizontal: 1
   },
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30
+  },
   buttonStyle: {
     width: '100%',
     marginVertical: 50,
