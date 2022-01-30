@@ -46,6 +46,8 @@ const Grade = () => {
     setGrades(gradeItems);
   };
 
+  const handleClimbSave = () => {};
+
   return (
     <View>
       <Text>Climbing type</Text>
