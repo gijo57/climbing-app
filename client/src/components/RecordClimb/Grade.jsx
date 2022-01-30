@@ -34,17 +34,16 @@ const Grade = () => {
   const [grade, setGrade] = useState(null);
 
   const handleTypeSelection = async () => {
-    const response = await getGradingSystems(climbingType);
-    const systems = response.map((system) => ({
-      label: system.name,
-      value: system.name
-    }));
+    const systems = await getGradingSystems(climbingType);
     setGradingSystems(systems);
   };
 
   const handleSystemSelection = () => {
-    const currentGrades = gradingSystem.grades;
-    console.log(currentGrades);
+    const grades = gradingSystems.find(
+      (system) => system.name === gradingSystem
+    ).grades;
+    const gradeItems = grades.map((grade) => ({ label: grade, value: grade }));
+    setGrades(gradeItems);
   };
 
   return (
@@ -65,18 +64,17 @@ const Grade = () => {
         onValueChange={(value) => setGradingSystem(value)}
         onClose={handleSystemSelection}
         disabled={!climbingType}
-        items={gradingSystems}
+        items={gradingSystems.map((system) => ({
+          label: system.name,
+          value: system.name
+        }))}
       />
       <Text>Grade</Text>
       <Picker
         value={grade}
         onValueChange={(value) => setGrade(value)}
         disabled={!gradingSystem}
-        items={[
-          { label: 'Football', value: 'football' },
-          { label: 'Baseball', value: 'baseball' },
-          { label: 'Hockey', value: 'hockey' }
-        ]}
+        items={grades || []}
       />
     </View>
   );
