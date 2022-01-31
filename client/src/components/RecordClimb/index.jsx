@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { Modal, Portal, Button, Provider, useTheme } from 'react-native-paper';
+import { StyleSheet, Text, View } from 'react-native';
+import {
+  Modal,
+  Portal,
+  Button,
+  Provider,
+  Switch,
+  Divider,
+  useTheme
+} from 'react-native-paper';
 import Grade from './Grade';
 
 const styles = StyleSheet.create({
@@ -17,20 +25,47 @@ const styles = StyleSheet.create({
 });
 
 const RecordClimb = () => {
-  const [newClimbVisible, setNewClimbVisible] = React.useState(false);
-  const { containerStyle, buttonStyle } = useTheme();
-  const showModal = () => setNewClimbVisible(true);
-  const hideModal = () => setNewClimbVisible(false);
+  const [isNewClimbVisible, setIsNewClimbVisible] = useState(false);
+  const { containerStyle, buttonStyle, switchWrapperStyle } = useTheme();
+  const showModal = () => setIsNewClimbVisible(true);
+  const hideModal = () => setIsNewClimbVisible(false);
+  const [grade, setGrade] = useState(null);
+  const [gradingSystem, setGradingSystem] = useState(null);
+  const [isAscended, setIsAscended] = useState(false);
+  const [ascendType, setAscendType] = useState(null);
+  const [tags, setTags] = useState([]);
+  const [notes, setNotes] = useState('');
+
+  const handleSystemChange = (system) => {
+    setGradingSystem(system);
+  };
+
+  const handleGradeChange = (grade) => {
+    setGrade(grade);
+  };
 
   return (
     <Provider>
       <Portal>
         <Modal
-          visible={newClimbVisible}
+          visible={isNewClimbVisible}
           onDismiss={hideModal}
           contentContainerStyle={styles.modal}
         >
-          <Grade />
+          <View style={switchWrapperStyle}>
+            <Text>Ascended</Text>
+            <Switch
+              value={isAscended}
+              onValueChange={() => {
+                setIsAscended(!isAscended);
+              }}
+            />
+          </View>
+          <Divider />
+          <Grade
+            onSystemChange={handleSystemChange}
+            onGradeChange={handleGradeChange}
+          />
           <Button mode="contained" style={buttonStyle}>
             Save climb
           </Button>

@@ -1,7 +1,76 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, Platform } from 'react-native';
-import Picker, { defaultStyles } from 'react-native-picker-select';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
 import { getGradingSystems } from '../../services/gradingsystem';
+
+const styles = StyleSheet.create({
+  gradeContainer: {
+    marginVertical: 10
+  }
+});
+
+const Grade = ({ onSystemChange, onGradeChange }) => {
+  const [climbingType, setClimbingType] = useState(null);
+  const [gradingSystems, setGradingSystems] = useState([]);
+  const [gradingSystem, setGradingSystem] = useState(null);
+  const [grades, setGrades] = useState(null);
+  const [grade, setGrade] = useState(null);
+
+  const handleTypeSelection = async () => {
+    const systems = await getGradingSystems(climbingType);
+    setGradingSystems(systems);
+  };
+
+  const handleSystemSelection = () => {
+    const grades = gradingSystems.find(
+      (system) => system.name === gradingSystem
+    ).grades;
+    const gradeItems = grades.map((grade) => ({ label: grade, value: grade }));
+    setGrades(gradeItems);
+    onSystemChange(gradingSystem);
+  };
+
+  const handleGradeSelection = (grade) => {
+    setGrade(grade);
+    onGradeChange(grade);
+  };
+
+  return (
+    <View style={styles.gradeContainer}>
+      <Text>Climbing type</Text>
+      <RNPickerSelect
+        style={pickerSelectStyles}
+        value={climbingType}
+        onValueChange={(value) => setClimbingType(value)}
+        onClose={handleTypeSelection}
+        items={[
+          { label: 'Free climbing', value: 'Free climbing' },
+          { label: 'Bouldering', value: 'Bouldering' }
+        ]}
+      />
+      <Text>Grading system</Text>
+      <RNPickerSelect
+        style={pickerSelectStyles}
+        value={gradingSystem}
+        onValueChange={(value) => setGradingSystem(value)}
+        onClose={handleSystemSelection}
+        disabled={!climbingType}
+        items={gradingSystems.map((system) => ({
+          label: system.name,
+          value: system.name
+        }))}
+      />
+      <Text>Grade</Text>
+      <RNPickerSelect
+        style={pickerSelectStyles}
+        value={grade}
+        onValueChange={(value) => handleGradeSelection(value)}
+        disabled={!gradingSystem}
+        items={grades || []}
+      />
+    </View>
+  );
+};
 
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
@@ -25,61 +94,5 @@ const pickerSelectStyles = StyleSheet.create({
     paddingRight: 30 // to ensure the text is never behind the icon
   }
 });
-
-const Grade = () => {
-  const [climbingType, setClimbingType] = useState(null);
-  const [gradingSystems, setGradingSystems] = useState([]);
-  const [gradingSystem, setGradingSystem] = useState(null);
-  const [grades, setGrades] = useState(null);
-  const [grade, setGrade] = useState(null);
-
-  const handleTypeSelection = async () => {
-    const systems = await getGradingSystems(climbingType);
-    setGradingSystems(systems);
-  };
-
-  const handleSystemSelection = () => {
-    const grades = gradingSystems.find(
-      (system) => system.name === gradingSystem
-    ).grades;
-    const gradeItems = grades.map((grade) => ({ label: grade, value: grade }));
-    setGrades(gradeItems);
-  };
-
-  const handleClimbSave = () => {};
-
-  return (
-    <View>
-      <Text>Climbing type</Text>
-      <Picker
-        value={climbingType}
-        onValueChange={(value) => setClimbingType(value)}
-        onClose={handleTypeSelection}
-        items={[
-          { label: 'Free climbing', value: 'Free climbing' },
-          { label: 'Bouldering', value: 'Bouldering' }
-        ]}
-      />
-      <Text>Grading system</Text>
-      <Picker
-        value={gradingSystem}
-        onValueChange={(value) => setGradingSystem(value)}
-        onClose={handleSystemSelection}
-        disabled={!climbingType}
-        items={gradingSystems.map((system) => ({
-          label: system.name,
-          value: system.name
-        }))}
-      />
-      <Text>Grade</Text>
-      <Picker
-        value={grade}
-        onValueChange={(value) => setGrade(value)}
-        disabled={!gradingSystem}
-        items={grades || []}
-      />
-    </View>
-  );
-};
 
 export default Grade;
