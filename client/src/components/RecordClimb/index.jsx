@@ -59,13 +59,20 @@ const RecordClimb = () => {
     'asdasdasd'
   ]);
   const [notes, setNotes] = useState('');
-  console.log(ascendType);
+
   const handleSystemChange = (system) => {
     setGradingSystem(system);
   };
 
   const handleGradeChange = (grade) => {
     setGrade(grade);
+  };
+
+  const handleTagAddition = () => {};
+
+  const handleTagRemoval = (tagToRemove) => {
+    const updatedTags = tags.filter((tag) => tag !== tagToRemove);
+    setTags(updatedTags);
   };
 
   return (
@@ -137,8 +144,13 @@ const RecordClimb = () => {
           <Divider />
           <View style={styles.tagsWrapper}>
             {tags.map((tag) => (
-              <Chip style={styles.tag}>{tag}</Chip>
+              <Chip onClose={() => handleTagRemoval(tag)} style={styles.tag}>
+                {tag}
+              </Chip>
             ))}
+            <Chip onPress={handleTagAddition} style={styles.tag}>
+              +
+            </Chip>
           </View>
           <Button mode="contained" style={buttonStyle}>
             Save climb
