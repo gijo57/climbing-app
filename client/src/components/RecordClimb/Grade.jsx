@@ -5,7 +5,7 @@ import { getGradingSystems } from '../../services/gradingsystem';
 
 const styles = StyleSheet.create({
   gradeContainer: {
-    marginVertical: 10
+    marginVertical: 20
   }
 });
 

@@ -8,6 +8,7 @@ import {
   Switch,
   Divider,
   ToggleButton,
+  Chip,
   useTheme
 } from 'react-native-paper';
 import Grade from './Grade';
@@ -29,6 +30,15 @@ const styles = StyleSheet.create({
   ascendTypeButton: {
     padding: 5,
     width: '25%'
+  },
+  tagsWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginVertical: 20
+  },
+  tag: {
+    margin: 2
   }
 });
 
@@ -41,7 +51,13 @@ const RecordClimb = () => {
   const [gradingSystem, setGradingSystem] = useState(null);
   const [isAscended, setIsAscended] = useState(false);
   const [ascendType, setAscendType] = useState(null);
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState([
+    'hurr',
+    'durrrrurrur',
+    'asdasd',
+    'asdasdasd',
+    'asdasdasd'
+  ]);
   const [notes, setNotes] = useState('');
   console.log(ascendType);
   const handleSystemChange = (system) => {
@@ -118,6 +134,12 @@ const RecordClimb = () => {
             onSystemChange={handleSystemChange}
             onGradeChange={handleGradeChange}
           />
+          <Divider />
+          <View style={styles.tagsWrapper}>
+            {tags.map((tag) => (
+              <Chip style={styles.tag}>{tag}</Chip>
+            ))}
+          </View>
           <Button mode="contained" style={buttonStyle}>
             Save climb
           </Button>
