@@ -7,6 +7,7 @@ import {
   Provider,
   Switch,
   Divider,
+  ToggleButton,
   useTheme
 } from 'react-native-paper';
 import Grade from './Grade';
@@ -21,6 +22,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     height: '100%',
     margin: 20
+  },
+  ascendTypeWrapper: {
+    marginVertical: 20
+  },
+  ascendTypeButton: {
+    padding: 5,
+    width: '25%'
   }
 });
 
@@ -35,7 +43,7 @@ const RecordClimb = () => {
   const [ascendType, setAscendType] = useState(null);
   const [tags, setTags] = useState([]);
   const [notes, setNotes] = useState('');
-
+  console.log(ascendType);
   const handleSystemChange = (system) => {
     setGradingSystem(system);
   };
@@ -61,6 +69,50 @@ const RecordClimb = () => {
               }}
             />
           </View>
+          {isAscended && (
+            <ToggleButton.Row
+              style={styles.ascendTypeWrapper}
+              onValueChange={(value) => setAscendType(value)}
+              value={ascendType}
+            >
+              <ToggleButton
+                style={styles.ascendTypeButton}
+                icon={() => (
+                  <View>
+                    <Text>Onsight</Text>
+                  </View>
+                )}
+                value="Onsight"
+              />
+              <ToggleButton
+                style={styles.ascendTypeButton}
+                icon={() => (
+                  <View>
+                    <Text>Flash</Text>
+                  </View>
+                )}
+                value="Flash"
+              />
+              <ToggleButton
+                style={styles.ascendTypeButton}
+                icon={() => (
+                  <View>
+                    <Text>Redpoint</Text>
+                  </View>
+                )}
+                value="Redpoint"
+              />
+              <ToggleButton
+                style={styles.ascendTypeButton}
+                icon={() => (
+                  <View>
+                    <Text>Repeat</Text>
+                  </View>
+                )}
+                value="Repeat"
+              />
+            </ToggleButton.Row>
+          )}
           <Divider />
           <Grade
             onSystemChange={handleSystemChange}
